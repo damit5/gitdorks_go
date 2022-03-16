@@ -1,59 +1,6 @@
 ## 介绍
 
-`gitdorks_go`是一款基于GO的自动调用github api收集敏感信息的工具，参考自 [GitDorker](https://github.com/obheda12/GitDorker)
-
-GitDorker本来已经很好用了，但是GitHub现在除了一分钟30次请求的限制，还存在[次要速率限制](https://docs.github.com/en/free-pro-team@latest/rest/overview/resources-in-the-rest-api#secondary-rate-limits)，所以使用之前的工具大部分请求都被拦截，拦截了后也不会重新发起请求来获取，相当于过滤掉了这一个关键词，所以用go重写了一个，大概解决了这些问题。
-
-<img src="README.assets/image-20220316151327854.png" alt="image-20220316151327854" style="zoom:25%;" />
-
-## 安装
-
-### 自己编译
-
-```shell
-go get github.com/damit5/gitdorks_go
-```
-
-或者
-
-```shell
-git clone https://github.com/damit5/gitdorks_go.git
-cd gitdorks_go
-bash build.sh
-```
-
-### 直接使用
-
-```shell
-git clone https://github.com/damit5/gitdorks_go.git
-cd gitdorks_go/release
-./gitdorks_go_amd_linux
-```
-
-
-
-### 文件目录
-
-```
-.
-├── Dorks						# 一些推荐dorks
-│   ├── alldorksv3
-│   ├── medium_dorks.txt
-│   └── smalldorks.txt
-├── README.md
-├── build.sh					# 编译脚本，可以直接用release目录下的
-├── go.mod
-├── go.sum
-├── main.go						# 主程序
-├── release
-│   ├── gitdorks_go.exe			# windows
-│   ├── gitdorks_go_amd_linux	# linux
-│   └── gitdorks_go_darwin		# mac
-└── tokenFile
-    └── tf.txt					# token file
-```
-
-
+`gitdorks_go`是一款基于GO的自动调用github api收集敏感信息的工具，参考自 [GitDorker](https://github.com/obheda12/GitDorker)，做了部分优化。
 
 ## 使用
 
@@ -100,6 +47,54 @@ gitdorks_go -gd Dorks/smalldorks.txt -nws 20 -target gm7.org -tf tokenFile/tf.tx
 
 ![image-20220316150834484](README.assets/image-20220316150834484.png)
 
+## 安装
+
+### 自己编译
+
+```shell
+go get github.com/damit5/gitdorks_go
+```
+
+或者
+
+```shell
+git clone https://github.com/damit5/gitdorks_go.git
+cd gitdorks_go
+bash build.sh
+```
+
+### 现成使用
+
+```shell
+git clone https://github.com/damit5/gitdorks_go.git
+cd gitdorks_go/release
+./gitdorks_go_amd_linux
+```
+
+
+
+### 文件目录
+
+```
+.
+├── Dorks						# 一些推荐dorks
+│   ├── alldorksv3
+│   ├── medium_dorks.txt
+│   └── smalldorks.txt
+├── README.md
+├── build.sh					# 编译脚本，可以直接用release目录下的
+├── go.mod
+├── go.sum
+├── main.go						# 主程序
+├── release
+│   ├── gitdorks_go.exe			# windows
+│   ├── gitdorks_go_amd_linux	# linux
+│   └── gitdorks_go_darwin		# mac
+└── tokenFile
+    └── tf.txt					# token file
+```
+
+
 ## 参考
 
 * [twitter](https://twitter.com/obheda12/status/1352686678318731264)
@@ -107,3 +102,9 @@ gitdorks_go -gd Dorks/smalldorks.txt -nws 20 -target gm7.org -tf tokenFile/tf.tx
 ![gitdork_v3](README.assets/gitdork_v3.png)
 
 * [GitDorker](https://github.com/obheda12/GitDorker)
+
+## 为什么要重复造轮子
+
+GitDorker本来已经很好用了，但是GitHub现在除了一分钟30次请求的限制，还存在[次要速率限制](https://docs.github.com/en/free-pro-team@latest/rest/overview/resources-in-the-rest-api#secondary-rate-limits)，所以使用之前的工具大部分请求都被拦截，拦截了后也不会重新发起请求来获取，相当于过滤掉了这一个关键词，所以用go重写了一个，大概解决了这些问题。
+
+<img src="README.assets/image-20220316151327854.png" alt="image-20220316151327854" style="zoom:25%;" />
