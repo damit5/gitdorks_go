@@ -94,7 +94,6 @@ cd gitdorks_go/release
     └── tf.txt					# token file
 ```
 
-
 ## 参考
 
 * [twitter](https://twitter.com/obheda12/status/1352686678318731264)
@@ -103,8 +102,16 @@ cd gitdorks_go/release
 
 * [GitDorker](https://github.com/obheda12/GitDorker)
 
-## 为什么要重复造轮子
+## Q&A
+
+### Access token 在哪
+
+github设置界面
+
+![access token](README.assets/image-20220316195619378.png)
+
+### 为什么要重复造轮子
 
 GitDorker本来已经很好用了，但是GitHub现在除了一分钟30次请求的限制，还存在[次要速率限制](https://docs.github.com/en/free-pro-team@latest/rest/overview/resources-in-the-rest-api#secondary-rate-limits)，所以使用之前的工具大部分请求都被拦截，拦截了后也不会重新发起请求来获取，相当于过滤掉了这一个关键词，所以用go重写了一个，大概解决了这些问题。
 
-<img src="README.assets/image-20220316151327854.png" alt="image-20220316151327854" style="zoom:25%;" />
+![bug](README.assets/image-20220316151327854.png)
