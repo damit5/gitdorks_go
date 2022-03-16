@@ -45,7 +45,7 @@ Usage of gitdorks_go:
 gitdorks_go -gd Dorks/smalldorks.txt -nws 20 -target gm7.org -tf tokenFile/tf.txt -ew 3
 ```
 
-![image-20220316150834484](README.assets/image-20220316150834484.png)
+![效果图](README.assets/image-20220316155344201.png)
 
 ## 安装
 

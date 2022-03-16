@@ -65,7 +65,7 @@ func query(dork string, token string) {
 		} else if tmpSource["total_count"] != nil { // 总数
 			totalCount := jsoniter.Get(source, "total_count").ToInt()
 			totalCountString := color.YellowString(fmt.Sprintf("(%s)", strconv.Itoa(totalCount)))
-			uriString := color.GreenString(strings.Replace(uri.String(), "https://api.github.com/search/code", "https://github.com/search", -1))
+			uriString := color.GreenString(strings.Replace(uri.String(), "https://api.github.com/search/code", "https://github.com/search", -1) + "&s=indexed&type=Code&o=desc")
 			fmt.Println(dork, " | ", totalCountString, " | ", uriString)
 		} else { // 其他未知错误
 			color.Blue("unknown error happened: %s", string(source))
