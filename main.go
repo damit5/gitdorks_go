@@ -28,6 +28,9 @@ var EachWait int64
 var Tokennum = 0
 var Tokens []string
 var Dorks []string
+// 错误次数，超过100次就强行结束程序，避免一直运行卡死
+var ErrorTimes = 0
+var ErrorMaxTimes = 100
 
 func query(dork string, token string) {
 	// 构造请求
@@ -54,6 +57,12 @@ func query(dork string, token string) {
 		_ = jsoniter.Unmarshal(source, &tmpSource)
 
 		if tmpSource["documentation_url"] != nil { // 错误拦截
+			// 错误次数太多，就直接停止程序了，避免一直卡死
+			ErrorTimes += 1
+			if ErrorTimes >= ErrorMaxTimes {
+				color.Red("Too many errors, auto stop")
+				os.Exit(0)
+			}
 			if NeedWait {
 				color.Blue("error: %s ; and we need wait %ds", jsoniter.Get(source, "documentation_url").ToString(), NeedWaitSecond)
 				time.Sleep(time.Second * time.Duration(NeedWaitSecond))

@@ -2,6 +2,8 @@
 
 `gitdorks_go`是一款基于GO的自动调用github api收集敏感信息的工具，参考自 [GitDorker](https://github.com/obheda12/GitDorker)，做了部分优化。
 
+* [x] 2022/04/21: 修复出现未知文档错误无限递归的问题，临时解决方案为错误100次后直接停止程序
+
 ## 使用
 
 ```ascii
@@ -112,6 +114,6 @@ github设置界面
 
 ### 为什么要重复造轮子
 
-GitDorker本来已经很好用了，但是GitHub现在除了一分钟30次请求的限制，还存在[次要速率限制](https://docs.github.com/en/free-pro-team@latest/rest/overview/resources-in-the-rest-api#secondary-rate-limits)，所以使用之前的工具大部分请求都被拦截，拦截了后也不会重新发起请求来获取，相当于过滤掉了这一个关键词，所以用go重写了一个，大概解决了这些问题。
+GitDorker本来已经很好用了，但是GitHub现在除了一分钟30次请求的限制，还存在[次要速率限制](https://docs.github.com/en/free-pro-team@latest/rest/overview/resources-in-the-rest-api#secondary-rate-limits)，所以使用之前的工具大部分请求都被拦截，拦截了后也不会重新发起请求来获取，相当于过滤掉了这一个关键词，使用如下图，所以用go重写了一个，大概解决了这些问题。
 
 ![bug](README.assets/image-20220316151327854.png)
